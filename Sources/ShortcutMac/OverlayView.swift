@@ -9,37 +9,51 @@ struct OverlayView: View {
                 .opacity(0.93)
                 .ignoresSafeArea()
 
-            VStack(spacing: 32) {
-                headerView
+            GeometryReader { geo in
+                let isSmall = geo.size.height < 900
+                let vSpacing: CGFloat = isSmall ? 16 : 24
+                let hPad: CGFloat = isSmall ? 32 : 48
+                let topPad: CGFloat = isSmall ? 32 : 48
 
-                // 2×2 바둑판식 배치
-                LazyVGrid(
-                    columns: Array(repeating: GridItem(.flexible(), spacing: 24), count: 2),
-                    spacing: 24
-                ) {
-                    ForEach(shortcutCategories) { category in
-                        CategoryCard(category: category)
+                VStack(spacing: vSpacing) {
+                    headerView(small: isSmall)
+
+                    HStack(alignment: .top, spacing: 20) {
+                        LazyVGrid(
+                            columns: Array(repeating: GridItem(.flexible(), spacing: 16), count: 2),
+                            spacing: 16
+                        ) {
+                            ForEach(shortcutCategories) { category in
+                                CategoryCard(category: category, small: isSmall)
+                            }
+                        }
+                        .frame(maxWidth: .infinity)
+
+                        CategoryCard(category: rectangleCategory, small: isSmall, compact: true)
+                            .fixedSize(horizontal: true, vertical: false)
+                            .frame(maxHeight: .infinity, alignment: .top)
                     }
-                }
-                .padding(.horizontal, 80)
+                    .padding(.horizontal, hPad)
 
-                Text("ESC 또는 화면 클릭으로 닫기")
-                    .font(.system(size: 16))
-                    .foregroundColor(.white.opacity(0.3))
+                    Text("ESC 또는 화면 클릭으로 닫기")
+                        .font(.system(size: isSmall ? 12 : 14))
+                        .foregroundColor(.white.opacity(0.3))
+                }
+                .padding(.top, topPad)
+                .padding(.bottom, isSmall ? 24 : 36)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .padding(.top, 80)
-            .padding(.bottom, 48)
         }
         .onTapGesture { onDismiss() }
     }
 
-    private var headerView: some View {
-        VStack(spacing: 8) {
+    private func headerView(small: Bool) -> some View {
+        VStack(spacing: 6) {
             Text("macOS 기본 단축키")
-                .font(.system(size: 44, weight: .bold))
+                .font(.system(size: small ? 28 : 36, weight: .bold))
                 .foregroundColor(.white)
             Text("자주 사용하는 키보드 단축키 모음")
-                .font(.system(size: 18))
+                .font(.system(size: small ? 13 : 15))
                 .foregroundColor(.white.opacity(0.45))
         }
     }
@@ -47,39 +61,57 @@ struct OverlayView: View {
 
 struct CategoryCard: View {
     let category: ShortcutCategory
+    var small: Bool = false
+    var compact: Bool = false
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 14) {
-            HStack(spacing: 8) {
+        let keySize: CGFloat = small ? 12 : 13
+        let descSize: CGFloat = small ? 12 : 13
+        let headerSize: CGFloat = small ? 14 : 16
+        let iconSize: CGFloat = small ? 15 : 18
+        let keyWidth: CGFloat = compact ? (small ? 76 : 86) : (small ? 105 : 120)
+        let pad: CGFloat = small ? 14 : 18
+        let vSpacing: CGFloat = small ? 8 : 10
+        let rowPad: CGFloat = small ? 1 : 2
+
+        VStack(alignment: .leading, spacing: vSpacing) {
+            HStack(spacing: 6) {
                 Text(category.icon)
-                    .font(.system(size: 22))
+                    .font(.system(size: iconSize))
                 Text(category.name)
-                    .font(.system(size: 20, weight: .semibold))
+                    .font(.system(size: headerSize, weight: .semibold))
                     .foregroundColor(.white)
             }
 
             Divider()
                 .background(Color.white.opacity(0.12))
-                .padding(.vertical, 2)
+                .padding(.vertical, 1)
 
             ForEach(category.items) { item in
-                HStack(spacing: 0) {
-                    Text(spacedKey(item.key))
-                        .font(.system(size: 17, weight: .semibold, design: .monospaced))
-                        .foregroundColor(Color(red: 1.0, green: 0.84, blue: 0.2))
-                        .frame(width: 145, alignment: .leading)
+                if item.isHeader {
+                    Text(item.description.uppercased())
+                        .font(.system(size: 10, weight: .semibold))
+                        .foregroundColor(.white.opacity(0.35))
+                        .padding(.top, 6)
+                } else {
+                    HStack(spacing: 0) {
+                        Text(spacedKey(item.key))
+                            .font(.system(size: keySize, weight: .semibold, design: .monospaced))
+                            .foregroundColor(Color(red: 1.0, green: 0.84, blue: 0.2))
+                            .frame(width: keyWidth, alignment: .leading)
 
-                    Text(item.description)
-                        .font(.system(size: 17))
-                        .foregroundColor(.white.opacity(0.85))
+                        Text(item.description)
+                            .font(.system(size: descSize))
+                            .foregroundColor(.white.opacity(0.85))
 
-                    Spacer(minLength: 0)
+                        if !compact { Spacer(minLength: 0) }
+                    }
+                    .padding(.vertical, rowPad)
                 }
-                .padding(.vertical, 3)
             }
         }
-        .padding(24)
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+        .padding(pad)
+        .frame(maxWidth: compact ? nil : .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(Color.white.opacity(0.06))
         .cornerRadius(14)
         .overlay(

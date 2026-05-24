@@ -4,6 +4,7 @@ struct ShortcutItem: Identifiable {
     let id = UUID()
     let key: String
     let description: String
+    var isHeader: Bool = false
 }
 
 struct ShortcutCategory: Identifiable {
@@ -50,3 +51,28 @@ let shortcutCategories: [ShortcutCategory] = [
         ShortcutItem(key: "⌘P", description: "프린트"),
     ]),
 ]
+
+let rectangleCategory = ShortcutCategory(name: "Rectangle", icon: "🟦", items: [
+    ShortcutItem(key: "", description: "절반", isHeader: true),
+    ShortcutItem(key: "⌃⌥←", description: "왼쪽"),
+    ShortcutItem(key: "⌃⌥→", description: "오른쪽"),
+    ShortcutItem(key: "⌃⌥↑", description: "위쪽"),
+    ShortcutItem(key: "⌃⌥↓", description: "아래쪽"),
+    ShortcutItem(key: "", description: "사분면", isHeader: true),
+    ShortcutItem(key: "⌃⌥U", description: "왼쪽 위"),
+    ShortcutItem(key: "⌃⌥I", description: "오른쪽 위"),
+    ShortcutItem(key: "⌃⌥J", description: "왼쪽 아래"),
+    ShortcutItem(key: "⌃⌥K", description: "오른쪽 아래"),
+    ShortcutItem(key: "", description: "1/3 · 2/3", isHeader: true),
+    ShortcutItem(key: "⌃⌥D", description: "첫 1/3"),
+    ShortcutItem(key: "⌃⌥F", description: "가운데 1/3"),
+    ShortcutItem(key: "⌃⌥G", description: "마지막 1/3"),
+    ShortcutItem(key: "⌃⌥E", description: "첫 2/3"),
+    ShortcutItem(key: "⌃⌥R", description: "가운데 2/3"),
+    ShortcutItem(key: "⌃⌥T", description: "마지막 2/3"),
+    ShortcutItem(key: "", description: "기타", isHeader: true),
+    ShortcutItem(key: "⌃⌥↩", description: "최대화"),
+    ShortcutItem(key: "⌃⌥⇧↩", description: "거의 최대화"),
+    ShortcutItem(key: "⌃⌥C", description: "가운데"),
+    ShortcutItem(key: "⌃⌥⌫", description: "복원"),
+])
