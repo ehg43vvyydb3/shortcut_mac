@@ -23,8 +23,8 @@ struct OverlayView: View {
                 }
                 .padding(.horizontal, 80)
 
-                Text("ESC 또는 화면을 클릭하면 닫힙니다")
-                    .font(.system(size: 14))
+                Text("ESC 또는 화면 클릭으로 닫기")
+                    .font(.system(size: 16))
                     .foregroundColor(.white.opacity(0.3))
             }
             .padding(.top, 80)
@@ -36,10 +36,10 @@ struct OverlayView: View {
     private var headerView: some View {
         VStack(spacing: 8) {
             Text("macOS 기본 단축키")
-                .font(.system(size: 38, weight: .bold))
+                .font(.system(size: 44, weight: .bold))
                 .foregroundColor(.white)
             Text("자주 사용하는 키보드 단축키 모음")
-                .font(.system(size: 16))
+                .font(.system(size: 18))
                 .foregroundColor(.white.opacity(0.45))
         }
     }
@@ -52,9 +52,9 @@ struct CategoryCard: View {
         VStack(alignment: .leading, spacing: 14) {
             HStack(spacing: 8) {
                 Text(category.icon)
-                    .font(.system(size: 20))
+                    .font(.system(size: 22))
                 Text(category.name)
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.system(size: 20, weight: .semibold))
                     .foregroundColor(.white)
             }
 
@@ -65,12 +65,12 @@ struct CategoryCard: View {
             ForEach(category.items) { item in
                 HStack(spacing: 0) {
                     Text(spacedKey(item.key))
-                        .font(.system(size: 15, weight: .semibold, design: .monospaced))
+                        .font(.system(size: 17, weight: .semibold, design: .monospaced))
                         .foregroundColor(Color(red: 1.0, green: 0.84, blue: 0.2))
-                        .frame(width: 130, alignment: .leading)
+                        .frame(width: 145, alignment: .leading)
 
                     Text(item.description)
-                        .font(.system(size: 15))
+                        .font(.system(size: 17))
                         .foregroundColor(.white.opacity(0.85))
 
                     Spacer(minLength: 0)
