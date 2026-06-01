@@ -56,6 +56,8 @@ let shortcutCategories: [ShortcutCategory] = [
         ShortcutItem(key: "⌃⌘Q", description: "화면 잠금"),
         ShortcutItem(key: "⌘⇧Q", description: "로그아웃"),
         ShortcutItem(key: "⌘O", description: "열기"),
+        ShortcutItem(key: "fn Q", description: "빠른 메모 생성"),
+        ShortcutItem(key: "⌘⇧.", description: "파인더 숨김 파일 표시/숨김"),
     ]),
     ShortcutCategory(name: "Firefox", icon: "🦊", items: [
         ShortcutItem(key: "", description: "네비게이션", isHeader: true),
