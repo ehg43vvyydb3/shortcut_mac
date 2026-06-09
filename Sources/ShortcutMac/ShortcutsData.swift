@@ -104,6 +104,10 @@ let shortcutCategories: [ShortcutCategory] = [
     ]),
 ]
 
+let utilsCategory = ShortcutCategory(name: "스크립트 / 도구", icon: "🔧", items: [
+    ShortcutItem(key: "⌃⌥Q", description: "QR 코드 스캔 → 클립보드"),
+])
+
 let rectangleCategory = ShortcutCategory(name: "Rectangle", icon: "🟦", items: [
     ShortcutItem(key: "", description: "절반", isHeader: true),
     ShortcutItem(key: "⌃⌥←", description: "왼쪽"),

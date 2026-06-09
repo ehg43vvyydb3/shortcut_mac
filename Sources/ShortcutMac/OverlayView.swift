@@ -46,9 +46,13 @@ struct OverlayView: View {
                         }
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
 
-                        CategoryCard(category: rectangleCategory, small: small, compact: true)
-                            .fixedSize(horizontal: true, vertical: false)
-                            .frame(maxHeight: .infinity, alignment: .top)
+                        VStack(alignment: .leading, spacing: 10) {
+                            CategoryCard(category: rectangleCategory, small: small, compact: true)
+                                .fixedSize(horizontal: true, vertical: false)
+                            CategoryCard(category: utilsCategory, small: small, compact: true)
+                                .fixedSize(horizontal: true, vertical: false)
+                        }
+                        .frame(maxHeight: .infinity, alignment: .top)
                     }
                     .padding(.horizontal, small ? 28 : 44)
                     .frame(maxHeight: .infinity)
