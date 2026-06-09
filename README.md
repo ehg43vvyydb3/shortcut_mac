@@ -21,7 +21,7 @@ It uses the Carbon `RegisterEventHotKey` API so **no Accessibility permission is
 
 | Category | Examples |
 |----------|---------|
-| Basic editing | ⌘C, ⌘V, ⌘Z, ⌘A, ⌘F, ⌘S … |
+| Basic editing | ⌘C, ⌘V, ⌘Z, ⌘A, ⌘F, ⌘S … ⌘+drag (force move), ⌘C→⌥⌘V (cut-move) |
 | App / Window | ⌘Q, ⌘W, ⌘M, ⌘Tab, ⌘` … |
 | Screenshot | ⌘⇧3, ⌘⇧4, ⌘⇧5 … |
 | System | ⌘Space, ⌃⌘Q, ⌘⌥Esc … |
@@ -88,7 +88,7 @@ Carbon `RegisterEventHotKey` API를 사용해 **손쉬운 사용(Accessibility) 
 
 | 카테고리 | 예시 |
 |----------|------|
-| 기본 편집 | ⌘C, ⌘V, ⌘Z, ⌘A, ⌘F, ⌘S … |
+| 기본 편집 | ⌘C, ⌘V, ⌘Z, ⌘A, ⌘F, ⌘S … ⌘+드래그 (강제 이동), ⌘C→⌥⌘V (잘라내기 이동) |
 | 앱 / 윈도우 | ⌘Q, ⌘W, ⌘M, ⌘Tab, ⌘` … |
 | 스크린샷 | ⌘⇧3, ⌘⇧4, ⌘⇧5 … |
 | 시스템 | ⌘Space, ⌃⌘Q, ⌘⌥Esc … |
