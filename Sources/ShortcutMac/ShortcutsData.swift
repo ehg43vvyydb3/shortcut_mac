@@ -19,6 +19,8 @@ let shortcutCategories: [ShortcutCategory] = [
         ShortcutItem(key: "⌘C", description: "복사"),
         ShortcutItem(key: "⌘V", description: "붙여넣기"),
         ShortcutItem(key: "⌘X", description: "잘라내기"),
+        ShortcutItem(key: "⌘ + 드래그", description: "파일 강제 이동"),
+        ShortcutItem(key: "⌘C → ⌥⌘V", description: "파일 잘라내기 이동"),
         ShortcutItem(key: "⌘Z", description: "실행 취소"),
         ShortcutItem(key: "⌘⇧Z", description: "다시 실행"),
         ShortcutItem(key: "⌘A", description: "전체 선택"),
