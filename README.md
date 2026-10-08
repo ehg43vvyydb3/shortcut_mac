@@ -27,6 +27,7 @@ It uses the Carbon `RegisterEventHotKey` API so **no Accessibility permission is
 | System | ⌘Space, ⌃⌘Q, ⌘⌥Esc … |
 | Firefox | Navigation, Tabs, Bookmarks, DevTools … |
 | Terminal | tmux, vim, zsh … |
+| VS Code | Panels, terminal, Python run/debug, navigation, editing … |
 | Tools | **⌃⌥Q** — scan a QR code on screen |
 
 ### QR code scanner (⌃⌥Q)
@@ -94,6 +95,7 @@ Carbon `RegisterEventHotKey` API를 사용해 **손쉬운 사용(Accessibility) 
 | 시스템 | ⌘Space, ⌃⌘Q, ⌘⌥Esc … |
 | Firefox | 내비게이션, 탭, 북마크, 개발자 도구 … |
 | 터미널 | tmux, vim, zsh … |
+| VS Code | 패널, 터미널, 파이썬 실행/디버깅, 이동·검색, 편집 … |
 | 도구 | **⌃⌥Q** — 화면의 QR 코드 스캔 |
 
 ### QR 코드 스캐너 (⌃⌥Q)

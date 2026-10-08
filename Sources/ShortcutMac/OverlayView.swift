@@ -47,7 +47,7 @@ struct OverlayView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                         VStack(alignment: .leading, spacing: 10) {
-                            CategoryCard(category: rectangleCategory, small: small, compact: true)
+                            CategoryCard(category: vscodeCategory, small: small, compact: true)
                                 .fixedSize(horizontal: true, vertical: false)
                             CategoryCard(category: utilsCategory, small: small, compact: true)
                                 .fixedSize(horizontal: true, vertical: false)

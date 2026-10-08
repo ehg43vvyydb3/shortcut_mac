@@ -41,14 +41,14 @@ ShortcutsData.swift     ← ShortcutCategory / ShortcutItem 데이터 정의
 
 - `ShortcutCategory`: `name`, `icon`, `items`
 - `ShortcutItem`: `key` (단축키 표기), `description`, `isHeader` (섹션 헤더 여부)
-- `rectangleCategory`는 별도 상수로 분리되어 오른쪽 컬럼에 단독 표시됩니다.
+- `vscodeCategory`는 별도 상수로 분리되어 오른쪽 컬럼에 단독 표시됩니다.
 
 ## UI 레이아웃
 
 - 상단 4개 카테고리: 단일 컬럼 카드
 - Firefox: 2열 레이아웃 (`twoColumn: true`)
 - iTerm2: 단일 컬럼, 나머지 공간 채움
-- Rectangle: 우측에 고정 너비로 별도 배치
+- VS Code: 우측에 고정 너비로 별도 배치
 - `small` 모드: 화면 높이 < 1000px일 때 폰트/패딩 자동 축소
 
 ## 의존성
